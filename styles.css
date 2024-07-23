@@ -1,0 +1,12 @@
+header {
+    font-size:25px; 
+    background-color:grey;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    justify-content: space-between;
+}
+nav {
+    text-align:center; 
+    font-size:30px;
+}
