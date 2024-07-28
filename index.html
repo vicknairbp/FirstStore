@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+        <script src="scripts.js"></script>
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
@@ -15,31 +16,27 @@
                 <div><img src="imgs/heart.png"/></div>
                 <div>Your Wishlist</div>
             </div>
-            <div class="WishlistAndCart">
-            <div><img src="imgs/shoppingcart.png"/></div>
+            <a href="cartpage.html" class="WishlistAndCart">
+                <div class="cart">
+                    <img src="imgs/shoppingcart.png"/><sup></sup>
+                </div>
                 <div>Your Cart</div>
-            </div>
+            </a>
         </header>
         <main>
             <div class="products">
-                <div class="product">
-                    <div><img src="imgs/I.jpg"/></div>
-                    <div>eletronics</div>
-                </div>
                 <a class="product">
                     <div><img src="imgs/pencils Ticonderoga Premium Wood2.jpg"/></div>
                     <div>Ticonderoga Premium Wood</div>
                     <div class="price">$6.83</div>
+                    <button data-product="14">Add to cart</button>
                 </a>
                 <a class="product">
                     <div><img src="imgs/Paper Mate Clearpoint Mechanical.jpg"/></div>
                     <div>Paper Mate Clearpoint</div>
                     <div class="price">$7.83</div>
+                    <button data-product="9">Add to cart</button>
                 </a>
-                <div class="product">
-                    <div><img src="imgs/I.jpg"/></div>
-                    <div>eletronics</div>
-                </div>
             </div>
         </main>        
         <footer>

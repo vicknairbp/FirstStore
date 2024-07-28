@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    window.onload = function() {
+        console.log("cartpageloaded");
+        const IdNumberForProducts = JSON.parse(localStorage.getItem("cart"));
+        let shoppingcart = document.querySelector(".shopping-cart");
+        shoppingcart.innerText = IdNumberForProducts;
+    };
+</script>
+<body>
+    <main class="shopping-cart">
+    </main>
+</body>
+</html>
