@@ -4,17 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <script>
     window.onload = function() {
         console.log("cartpageloaded");
-        const IdNumberForProducts = JSON.parse(localStorage.getItem("cart"));
-        let shoppingcart = document.querySelector(".shopping-cart");
-        shoppingcart.innerText = IdNumberForProducts;
+        const IdNumberForProductsInCart = JSON.parse(localStorage.getItem("cart"));
+        fetch('./data.json')
+        .then((response) => response.json())
+        .then((products) => {
+            let productsCartPage = document.querySelector(".productsCartPage");
+            let amountTotal = 0;
+            products.forEach((product) => {
+                if (IdNumberForProductsInCart.includes(product.id)) {
+                    let newElement = '<div class="productCartPage">'+
+                    `<div><img src="${product.picture}"/></div>`+
+                    `<div>${product.name}</div>`+
+                    `<div class="price">$${product.price}</div>`+
+                    '</div>';
+                    productsCartPage.innerHTML += newElement;
+                    amountTotal += product.price;
+                }
+            });
+            let completeTotal = document.querySelector(".totalAmount");
+            completeTotal.innerHTML += amountTotal;
+        });
     };
 </script>
 <body>
+    <header>
+        First Store
+        <div id="search-bar">
+        </div>
+        <div class="WishlistAndCart">
+            <div><img src="imgs/heart.png"/></div>
+            <div>Your Wishlist</div>
+        </div>
+        <a href="cartpage.html" class="WishlistAndCart">
+            <div class="cart">
+                <img src="imgs/shoppingcart.png"/><sup></sup>
+            </div>
+            <div>Your Cart</div>
+        </a>
+    </header>
     <main class="shopping-cart">
+        <div class="productsCartPage"></div>
+        <div class="totalAmount">Total:</div>
     </main>
+    <footer>
+        <a href="aboutus.html" class="footer-link">ABOUT US</a>
+        <a class="footer-link">CATEGORIES</a>
+        <a href="./information.html" class="footer-link">INFORMATION</a>
+        <a href="./support.html" class="footer-link">SUPPORT</a>
+    </footer>
 </body>
 </html>

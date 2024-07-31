@@ -1,0 +1,33 @@
+[
+    {
+        "id": "1",
+        "name": "Ticonderoga Premium Wood",
+        "price": 6.83,
+        "picture": "imgs/pencils Ticonderoga Premium Wood2.jpg"
+    },
+    {
+        "id": "2",
+        "name": "Paper Mate Clearpoint",
+        "price": 7.83,
+        "picture": "imgs/Paper Mate Clearpoint Mechanical.jpg"
+    },
+    {
+        "id": "3",
+        "name": "Paper Mate Clearpoint",
+        "price": 5.83,
+        "picture": "imgs/Paper Mate Clearpoint Mechanical.jpg"
+    },
+    {
+        "id": "4",
+        "name": "Paper Mate Clearpoint",
+        "price": 9.83,
+        "picture": "imgs/Paper Mate Clearpoint Mechanical.jpg"
+    },
+    {
+        "id": "5",
+        "name": "Paper Mate Clearpoint",
+        "price": 4.83,
+        "picture": "imgs/Paper Mate Clearpoint Mechanical.jpg"
+    }
+
+]

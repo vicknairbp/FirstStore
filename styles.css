@@ -51,3 +51,11 @@ button {
     align-items: center;
     flex-direction: column;
 }
+.productCartPage {
+    display: flex;
+    justify-content: space-around;
+}
+.totalAmount {
+display: flex;
+justify-content: right;
+}
