@@ -21,6 +21,7 @@
                     `<div><img src="${product.picture}"/></div>`+
                     `<div>${product.name}</div>`+
                     `<div class="price">$${product.price}</div>`+
+                    `<button data-product="${product.id}">Remove from cart</button>`+
                     '</div>';
                     productsCartPage.innerHTML += newElement;
                     amountTotal += product.price;
@@ -28,6 +29,16 @@
             });
             let completeTotal = document.querySelector(".totalAmount");
             completeTotal.innerHTML += amountTotal;
+            const buttons = document.querySelectorAll(".productCartPage button");
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].addEventListener("click",  () => {
+                    let product = buttons[i].dataset.product;
+                    localStorage.removeItem("cart");
+                    let idcount = document.querySelector(".cart sup");
+                    idcount.innerText = idsInCart.length;
+                    localStorage.setItem("cart", JSON.stringify(idsInCart));
+                });
+            }
         });
     };
 </script>
@@ -50,6 +61,7 @@
     <main class="shopping-cart">
         <div class="productsCartPage"></div>
         <div class="totalAmount">Total:</div>
+        <a href="checkout.html" class="checkOutLink">buy</a>
     </main>
     <footer>
         <a href="aboutus.html" class="footer-link">ABOUT US</a>

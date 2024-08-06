@@ -63,3 +63,7 @@ button {
 display: flex;
 justify-content: right;
 }
+.checkOutLink {
+    display: flex;
+    justify-content: right;
+}
