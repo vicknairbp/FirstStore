@@ -32,11 +32,18 @@
             const buttons = document.querySelectorAll(".productCartPage button");
             for (let i = 0; i < buttons.length; i++) {
                 buttons[i].addEventListener("click",  () => {
-                    let product = buttons[i].dataset.product;
-                    localStorage.removeItem("cart");
-                    let idcount = document.querySelector(".cart sup");
-                    idcount.innerText = idsInCart.length;
-                    localStorage.setItem("cart", JSON.stringify(idsInCart));
+                    let productid = buttons[i].dataset.product;
+                     var productIdsInCart = JSON.parse(localStorage.getItem('cart'));
+                    for (let i = 0; i < productIdsInCart.length; i++) {
+                        if (productIdsInCart[i] == productid) {
+                            productIdsInCart.splice(i, 1);
+                            const elementToRemove = 
+                            document.getElementById('cart');
+                            elementToRemove.remove('cart');
+                        }
+                    }
+                    productIdsInCart = JSON.stringify(productIdsInCart);
+                    localStorage.setItem('cart', productIdsInCart);
                 });
             }
         });
