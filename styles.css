@@ -58,6 +58,8 @@ button {
 .productCartPage {
     display: flex;
     justify-content: space-around;
+    border: none;
+    
 }
 .totalAmount {
 display: flex;
