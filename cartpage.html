@@ -5,54 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="cartpage.js"></script>
 </head>
-<script>
-    window.onload = function() {
-        console.log("cartpageloaded");
-        let cartsup = document.querySelector(".cart sup");
-        var productIdsInCart = JSON.parse(localStorage.getItem("cart"));
-        cartsup.innerText = productIdsInCart.length;
-        fetch('./data.json')
-        .then((response) => response.json())
-        .then((products) => {
-            let productsCartPage = document.querySelector(".productsCartPage");
-            let amountTotal = 0;
-            products.forEach((product) => {
-                if (productIdsInCart.includes(product.id)) {
-                    let newElement = `<div data-product="${product.id}" class="productCartPage" data-productPrice="${product.price}">`+
-                    `<div><img src="${product.picture}"/></div>`+
-                    `<div>${product.name}</div>`+
-                    `<div class="price">$${product.price}</div>`+
-                    `<button data-product="${product.id}" >Remove from cart</button>`+
-                    '</div>';
-                    productsCartPage.innerHTML += newElement;
-                    amountTotal += product.price;
-                }
-            });
-            let completeTotal = document.querySelector(".totalAmount");
-            completeTotal.innerHTML += amountTotal.toFixed(2);
-            const buttons = document.querySelectorAll(".productCartPage button");
-            for (let i = 0; i < buttons.length; i++) {
-                buttons[i].addEventListener("click",  () => {
-                    let productid = buttons[i].dataset.product;
-                        for (let i = 0; i < productIdsInCart.length; i++) {
-                            if (productIdsInCart[i] == productid) {
-                                productIdsInCart.splice(i, 1);
-                                const productlayout = document.querySelector(`[data-product~="${productid}"]`);
-                                productlayout?.remove();
-                                let productPrice = Number(productlayout?.getAttribute("data-productPrice"));
-                                amountTotal -= productPrice;
-                            }
-                        }
-                    cartsup.innerText = productIdsInCart.length;
-                    let completeTotal = document.querySelector(".totalAmount");
-                    completeTotal.innerHTML = amountTotal.toFixed(2);
-                    localStorage.setItem('cart', JSON.stringify(productIdsInCart));
-                });
-            }
-        });
-    };
-</script>
+    <!-- Replace the "test" client-id value with your client-id -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AZ0YSAoh3DKNpNeKPo9hzwocpglaszHmKF3oEeo2sfhhuOhCag3QRLQUC_RBk_R4cSbgljFG4KkOPxLI&components=buttons&enable-funding=paylater,venmo,card" data-sdk-integration-source="integrationbuilder_sc"></script>
+    <!-- <script src="app.js"></script> -->
 <body>
     <header>
         Elevate
@@ -72,7 +31,8 @@
     <main class="shopping-cart">
         <div class="productsCartPage"></div>
         <div class="totalAmount">Total:</div>
-        <a href="checkout.html" class="checkOutLink">buy</a>
+        <div id="paypal-button-container"></div>
+        <p id="result-message"></p>
     </main>
     <footer>
         <a href="aboutus.html" class="footer-link">ABOUT US</a>

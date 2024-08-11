@@ -57,15 +57,31 @@ button {
 }
 .productCartPage {
     display: flex;
-    justify-content: space-around;
-    border: none;
-    
+    justify-content: space-around;  
 }
 .totalAmount {
-display: flex;
-justify-content: right;
+    display: flex;
+    justify-content: right;
 }
 .checkOutLink {
     display: flex;
     justify-content: right;
+}
+.productsCartPage img{
+    max-width: 50%;
+    height: auto;
+}
+.productsCartPage button{
+    width: 60px;
+    height: 10px;
+    border: 0;
+}
+#paypal-button-container{
+    width: 350px;
+}
+.productsCartPage {
+    width: 65%;
+    padding-left: 17%;
+    padding-right: 17%;
+
 }
