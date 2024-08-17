@@ -13,7 +13,7 @@ window.onload = function() {
                 let newElement = `<div data-product="${product.id}" class="productCartPage" data-productPrice="${product.price}">`+
                 `<div><img src="${product.picture}"/></div>`+
                 `<div>${product.name}</div>`+
-                `<div class="price">$${product.price}</div>`+
+                `<div class="price">Price &nbsp;$${product.price}</div>`+
                 `<button data-product="${product.id}" >Remove</button>`+
                 '</div>';
                 productsCartPage.innerHTML += newElement;

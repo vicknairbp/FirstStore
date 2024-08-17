@@ -14,14 +14,10 @@
     <!-- <script src="app.js"></script> -->
 <body>
     <header>
-        Elevate
+        <a href="index.html" class="mainPage-link">Elevate</a>
         <div id="search-bar">
         </div>
-        <div class="WishlistAndCart">
-            <div><img src="imgs/heart.png"/></div>
-            <div>Your Wishlist</div>
-        </div>
-        <a href="cartpage.html" class="WishlistAndCart">
+        <a href="cartpage.html" class="Cart">
             <div class="cart">
                 <img src="imgs/shoppingcart.png"/><sup></sup>
             </div>
@@ -29,10 +25,13 @@
         </a>
     </header>
     <main class="shopping-cart">
+        <div class="shoppingcart">Your Shopping Cart</div>
         <div class="productsCartPage"></div>
-        <div class="totalAmount">Total:</div>
-        <div id="paypal-button-container"></div>
-        <p id="result-message"></p>
+        <div class="paypalbuttons">
+            <div class="totalAmount">Subtotal:</div>
+            <div id="paypal-button-container"></div>
+            <p id="result-message"></p>
+        </div>
     </main>
     <footer>
         <a href="aboutus.html" class="footer-link">ABOUT US</a>

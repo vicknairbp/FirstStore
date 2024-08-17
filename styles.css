@@ -7,12 +7,12 @@ body {
     font-family: 'Lato', sans-serif;
 }
 header {
-    font-size:35px; 
+    font-size:39px; 
     background-color: rgb(2, 3, 10);
     color: white;
     font-family: 'Lato', sans-serif;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 20px;
 }
 footer{
@@ -49,7 +49,7 @@ button {
     flex-direction: column;
     align-items: center;
 }
-.WishlistAndCart {
+.Cart {
     font-size:13px;
     display: flex;
     align-items: center;
@@ -57,11 +57,14 @@ button {
 }
 .productCartPage {
     display: flex;
-    justify-content: space-around;  
+    justify-content: space-around;
+    border: 1px solid #00000062;
+    margin: 1px;
+    font-size: 18px;
 }
 .totalAmount {
     display: flex;
-    justify-content: right;
+    justify-content: left;
 }
 .checkOutLink {
     display: flex;
@@ -83,5 +86,20 @@ button {
     width: 65%;
     padding-left: 17%;
     padding-right: 17%;
-
+}
+.shoppingcart {
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+}
+.shopping-cart {
+    border: 1px solid #00000062;
+}
+.paypalbuttons {
+    height: 250px;
+    width: 349px;
+    overflow: hidden;
+    position: center;
+    margin-left: auto; 
+    margin-left: auto;
 }
