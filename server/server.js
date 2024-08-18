@@ -3,7 +3,12 @@ import fetch from "node-fetch";
 import "dotenv/config";
 import path from "path";
 
-const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, PORT = 8888 } = process.env;
+// require("dotenv").config();
+// console.log(process.env.PAYPAL_CLIENT_ID)
+// console.log(process.env.PAYPAL_CLIENT_SECRET)
+const PORT = 8888;
+const  PAYPAL_CLIENT_SECRET = process.env (PAYPAL_CLIENT_SECRET);
+const PAYPAL_CLIENT_ID = process.env (PAYPAL_CLIENT_ID);
 const base = "https://api-m.sandbox.paypal.com";
 const app = express();
 
@@ -144,7 +149,7 @@ app.post("/api/orders/:orderID/capture", async (req, res) => {
 
 // serve index.html
 app.get("/", (req, res) => {
-  res.sendFile(path.resolve("../cartpage.html"));
+  res.sendFile(path.resolve("../index.html"));
 });
 
 app.listen(PORT, () => {
