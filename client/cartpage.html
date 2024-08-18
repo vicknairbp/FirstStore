@@ -7,11 +7,8 @@
     <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="cartpage.js"></script>
+    <script src="cartpage.js" defer></script>
 </head>
-    <!-- Replace the "test" client-id value with your client-id -->
-    <script src="https://www.paypal.com/sdk/js?client-id=AZ0YSAoh3DKNpNeKPo9hzwocpglaszHmKF3oEeo2sfhhuOhCag3QRLQUC_RBk_R4cSbgljFG4KkOPxLI&components=buttons&enable-funding=paylater,venmo,card" data-sdk-integration-source="integrationbuilder_sc"></script>
-    <!-- <script src="app.js"></script> -->
 <body>
     <header>
         <a href="index.html" class="mainPage-link">Elevate</a>
@@ -30,7 +27,8 @@
         <div class="paypalbuttons">
             <div class="totalAmount">Subtotal:</div>
             <div id="paypal-button-container"></div>
-            <p id="result-message"></p>
+            <!-- Replace the "test" client-id value with your client-id -->
+            <script src="https://www.paypal.com/sdk/js?client-id=AZ0YSAoh3DKNpNeKPo9hzwocpglaszHmKF3oEeo2sfhhuOhCag3QRLQUC_RBk_R4cSbgljFG4KkOPxLI&components=buttons&enable-funding=paylater,venmo,card" data-sdk-integration-source="integrationbuilder_sc"></script>
         </div>
     </main>
     <footer>
@@ -38,6 +36,7 @@
         <a class="footer-link">CATEGORIES</a>
         <a href="./information.html" class="footer-link">INFORMATION</a>
         <a href="./support.html" class="footer-link">SUPPORT</a>
+        <p id="result-message"></p>
     </footer>
 </body>
 </html>

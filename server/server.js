@@ -3,14 +3,13 @@ import fetch from "node-fetch";
 import "dotenv/config";
 import path from "path";
 
-// require("dotenv").config();
-// console.log(process.env.PAYPAL_CLIENT_ID)
-// console.log(process.env.PAYPAL_CLIENT_SECRET)
-const PORT = 8888;
-const  PAYPAL_CLIENT_SECRET = process.env (PAYPAL_CLIENT_SECRET);
-const PAYPAL_CLIENT_ID = process.env (PAYPAL_CLIENT_ID);
+//const { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, PORT = 8888 } = process.env;
+const PORT = 8888
+const PAYPAL_CLIENT_ID="AZ0YSAoh3DKNpNeKPo9hzwocpglaszHmKF3oEeo2sfhhuOhCag3QRLQUC_RBk_R4cSbgljFG4KkOPxLI"
+const PAYPAL_CLIENT_SECRET="EMg2sZxVyNKm9tEfwijpx787R2vewfNsleNVOEaiqcL92hoDi9CSxrF73bFwjLLBXsgQst22i-S7OQvT"
 const base = "https://api-m.sandbox.paypal.com";
 const app = express();
+let amountTotal = 
 
 // host static files
 app.use(express.static("client"));
@@ -64,7 +63,7 @@ const createOrder = async (cart) => {
       {
         amount: {
           currency_code: "USD",
-          value: "100.00",
+          value: cart[0].amount
         },
       },
     ],
