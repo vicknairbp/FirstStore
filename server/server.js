@@ -1,3 +1,4 @@
+import {writeFile, readFile} from 'fs';
 import express from "express";
 import fetch from "node-fetch";
 import "dotenv/config";
@@ -9,7 +10,6 @@ const PAYPAL_CLIENT_ID="AZ0YSAoh3DKNpNeKPo9hzwocpglaszHmKF3oEeo2sfhhuOhCag3QRLQU
 const PAYPAL_CLIENT_SECRET="EMg2sZxVyNKm9tEfwijpx787R2vewfNsleNVOEaiqcL92hoDi9CSxrF73bFwjLLBXsgQst22i-S7OQvT"
 const base = "https://api-m.sandbox.paypal.com";
 const app = express();
-let amountTotal = 
 
 // host static files
 app.use(express.static("client"));
@@ -63,7 +63,7 @@ const createOrder = async (cart) => {
       {
         amount: {
           currency_code: "USD",
-          value: cart[0].amount
+          value: cart.total
         },
       },
     ],
@@ -133,15 +133,37 @@ app.post("/api/orders", async (req, res) => {
     console.error("Failed to create order:", error);
     res.status(500).json({ error: "Failed to create order." });
   }
+
+  
 });
 
 app.post("/api/orders/:orderID/capture", async (req, res) => {
   try {
     const { orderID } = req.params;
     const { jsonResponse, httpStatusCode } = await captureOrder(orderID);
+    if (httpStatusCode == 201) {
+     
+      const pathjson = './orders.json';
+
+      readFile(pathjson, (error, data) => {
+        if (error) {
+          console.log(error);
+          return;
+        }
+        const parsedData = JSON.parse(data);
+        parsedData.createdAt = new Date().toISOString();
+        writeFile(pathjson, JSON.stringify(parsedData, null, 2), (err) => {
+          if (err) {
+            console.log('Failed to write updated data to file');
+            return;
+          }
+          console.log('Updated file successfully');
+        });
+      });
+    }
     res.status(httpStatusCode).json(jsonResponse);
   } catch (error) {
-    console.error("Failed to create order:", error);
+    reqconsole.error("Failed to create order:", error);
     res.status(500).json({ error: "Failed to capture order." });
   }
 });
@@ -154,3 +176,4 @@ app.get("/", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Node server listening at http://localhost:${PORT}/`);
 });
+

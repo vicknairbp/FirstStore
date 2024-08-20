@@ -57,18 +57,10 @@ window.onload = function() {
             // use the "body" param to optionally pass additional order information
             // like product ids and quantities
             body: JSON.stringify({
-                cart: [
+                cart: 
                   {
-                      id: "YOUR_PRODUCT_ID",
-                      quantity: "YOUR_PRODUCT_QUANTITY",
-                      amount: amountTotal.toFixed(2).toString()
-                  },
-                  {
-                      id: "YOUR_PRODUCT_ID",
-                      quantity: "YOUR_PRODUCT_QUANTITY",
-                      amount: amountTotal.toFixed(2).toString()
+                      total: amountTotal.toFixed(2).toString()
                   }
-                ],
             }),
           });
 
