@@ -173,10 +173,12 @@ app.post("/api/orders/:orderID/capture", async (req, res) => {
 
 // serve index.html
 app.get("/", (req, res) => {
-  res.sendFile(path.resolve("../index.html"));
+  res.sendFile(path.resolve("./index.html"));
 });
 
-app.listen(PORT, () => {
-  console.log(`Node server listening at http://localhost:${PORT}/`);
+// app.listen(PORT, () => {
+//   console.log(`Node server listening at http://localhost:${PORT}/`);
+// });
+app.listen(process.env.PORT || 3000, function(){
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
-
