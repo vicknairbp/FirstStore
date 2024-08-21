@@ -152,6 +152,9 @@ app.post("/api/orders/:orderID/capture", async (req, res) => {
         }
         const parsedData = JSON.parse(data);
         parsedData.createdAt = new Date().toISOString();
+        // parsedData.push({
+        //   id: orderID, price: 
+        // })
         writeFile(pathjson, JSON.stringify(parsedData, null, 2), (err) => {
           if (err) {
             console.log('Failed to write updated data to file');
