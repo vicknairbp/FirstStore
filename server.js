@@ -140,6 +140,7 @@ app.post("/api/orders", async (req, res) => {
 app.post("/api/orders/:orderID/capture", async (req, res) => {
   try {
     const { orderID } = req.params;
+    const { products } = req.body;
     const { jsonResponse, httpStatusCode } = await captureOrder(orderID);
     if (httpStatusCode == 201) {
      
@@ -150,12 +151,10 @@ app.post("/api/orders/:orderID/capture", async (req, res) => {
           console.log(error);
           return;
         }
-        const parsedData = JSON.parse(data);
-        parsedData.createdAt = new Date().toISOString();
-        // parsedData.push({
-        //   id: orderID, price: 
-        // })
-        writeFile(pathjson, JSON.stringify(parsedData, null, 2), (err) => {
+        let Orders = JSON.parse(data);
+        Orders.push ()
+        Orders.createdAt = new Date().toISOString();
+        writeFile(pathjson, JSON.stringify(Orders, null, 2), (err) => {
           if (err) {
             console.log('Failed to write updated data to file');
             return;

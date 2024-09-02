@@ -1,9 +1,15 @@
+import { updateNumberofIdsInCart } from "./utilis.js";
+
+function updateSubtotal(amountTotal){
+  let completeTotal = document.querySelector(".totalAmount");
+  completeTotal.innerHTML = amountTotal.toFixed(2);
+}; 
+
 window.onload = function() {   
   let amountTotal = 0; 
   console.log("cartpageloaded");
-  let cartsup = document.querySelector(".cart sup");
   var productIdsInCart = JSON.parse(localStorage.getItem("cart"));
-  cartsup.innerText = productIdsInCart.length;
+  updateNumberofIdsInCart(productIdsInCart.length);
   fetch('./data.json')
   .then((response) => response.json())
   .then((products) => {
@@ -20,8 +26,7 @@ window.onload = function() {
               amountTotal += product.price;
           }
       });
-      let completeTotal = document.querySelector(".totalAmount");
-      completeTotal.innerHTML += amountTotal.toFixed(2);
+      updateSubtotal(amountTotal);
       const buttons = document.querySelectorAll(".productCartPage button");
       for (let i = 0; i < buttons.length; i++) {
           buttons[i].addEventListener("click",  () => {
@@ -35,9 +40,8 @@ window.onload = function() {
                           amountTotal -= productPrice;
                       }
                   }
-              cartsup.innerText = productIdsInCart.length;
-              let completeTotal = document.querySelector(".totalAmount");
-              completeTotal.innerHTML = amountTotal.toFixed(2);
+              updateNumberofIdsInCart(productIdsInCart.length);
+              updateSubtotal(amountTotal);
               localStorage.setItem('cart', JSON.stringify(productIdsInCart));
           });
       }
@@ -87,6 +91,11 @@ window.onload = function() {
           headers: {
             "Content-Type": "application/json",
           },
+          body: JSON.stringify({
+            products: [
+              ...productIdsInCart
+            ]
+          })
         });
 
         const orderData = await response.json();

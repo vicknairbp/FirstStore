@@ -1,4 +1,4 @@
-
+import { updateNumberofIdsInCart } from "./utilis.js";
 window.onload = function() {
     fetch('./data.json')
         .then((response) => response.json())
@@ -25,12 +25,10 @@ window.onload = function() {
                 buttons[i].addEventListener("click",  () => {
                     let product = buttons[i].dataset.product;
                     idsInCart.push(product);
-                    let idcount = document.querySelector(".cart sup");
-                    idcount.innerText = idsInCart.length;
+                    updateNumberofIdsInCart(idsInCart.length)
                     localStorage.setItem("cart", JSON.stringify(idsInCart));
                 });
             }
-            let idcount = document.querySelector(".cart sup");
-            idcount.innerText = idsInCart.length;
+            updateNumberofIdsInCart(idsInCart.length)
         });
 };
